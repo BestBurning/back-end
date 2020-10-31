@@ -21,5 +21,8 @@
         <module>redis</module>
         <module>shiro</module>
         <module>test</module>
+        <module>activity-mq</module>
+        <module>drools</module>
+        <module>activity-mq</module>
     </modules>
 </project>

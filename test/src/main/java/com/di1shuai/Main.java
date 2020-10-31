@@ -44,7 +44,9 @@ public class Main {
                 }
                 System.out.println(file.getAbsolutePath());
             }
-            renameFiles(file,source,traget);
+            if (file.isDirectory()){
+                renameFiles(file,source,traget);
+            }
         }
     }
 
