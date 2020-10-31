@@ -112,3 +112,6 @@ hs_err_pid*
 
 *.iml
 .idea
+*.classpath
+*.project
+.settings
