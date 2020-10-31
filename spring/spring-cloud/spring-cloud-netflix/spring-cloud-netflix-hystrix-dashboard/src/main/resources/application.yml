@@ -1,0 +1,40 @@
+server:
+  port: 9001
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: hystrix-dashboard
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: HystrixDashboard微服务监控面板
+
+---
+spring:
+  profiles: local
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+---
+spring:
+  profiles: cluster
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8761/eureka,http://eureka2:8762/eureka,http://eureka3:8763/eureka

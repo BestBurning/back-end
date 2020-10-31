@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: aliadmin-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+info:
+  app:
+    name: ${spring.application.name}
+    description: Admin Server
+  build:
+    artifactId: @project.artifactId@
+    version: @project.version@

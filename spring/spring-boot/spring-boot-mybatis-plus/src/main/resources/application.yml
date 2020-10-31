@@ -1,0 +1,14 @@
+#Server Port
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+spring:
+  date-format: yyyy-MM-dd HH:mm:ss
+  time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&characterEncoding=utf8&useUnicode=true&useAffectedRows=true
+    username: root
+    password: admin
+    driverClassName: com.mysql.jdbc.Driver

@@ -1,0 +1,56 @@
+server:
+  port: 8881
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: consumer-user
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}-${random.value}
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: UserCURD功能的调用者
+  build:
+    artifactId: @project.artifactId@
+    version: @project.version@
+
+---
+spring:
+  profiles: local
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+---
+spring:
+  profiles: cluster
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8761/eureka,http://eureka2:8762/eureka,http://eureka3:8763/eureka
