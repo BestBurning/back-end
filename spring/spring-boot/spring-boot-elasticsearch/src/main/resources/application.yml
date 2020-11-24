@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+spring:
+  elasticsearch:
+    rest:
+      uris: di1shuai-2:9200

@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = MailApplication.class)
+@SpringBootTest(classes = com.di1shuai.test.mail.MailApplication.class)
 public class ApplicationTests {
 
 	@Autowired
