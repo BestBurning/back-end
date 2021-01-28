@@ -17,12 +17,11 @@
         <module>jsoup</module>
         <module>jwt</module>
         <module>netty</module>
-        <module>qrgen</module>
         <module>redis</module>
         <module>shiro</module>
         <module>test</module>
         <module>activity-mq</module>
         <module>drools</module>
-        <module>activity-mq</module>
+        <module>rpc</module>
     </modules>
 </project>
