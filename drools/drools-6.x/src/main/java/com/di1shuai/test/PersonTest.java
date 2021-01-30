@@ -6,7 +6,6 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 
-
 /**
  * Created by yangyibo on 16/12/7.
  */
