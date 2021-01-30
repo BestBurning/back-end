@@ -1,0 +1,42 @@
+package rules;
+
+import com.di1shuai.drools.entity.Order;
+
+// <100 价格不变
+rule "order_discount_1"
+    when
+        // 模式匹配
+        $o : Order(originalPrice < 100)
+    then
+        $o.setRealPrice($o.getOriginalPrice());
+        System.out.println("成功匹配到 1");
+end
+
+
+// 100 <= x < 200    -20
+rule "order_discount_2"
+    when
+        $o : Order(originalPrice >= 100 && originalPrice < 200)
+    then
+        $o.setRealPrice($o.getOriginalPrice() - 20);
+        System.out.println("成功匹配到 2");
+end
+
+// 200 <= x < 400    -50
+rule "order_discount_3"
+    when
+        $o : Order(originalPrice >= 200 && originalPrice < 400)
+    then
+        $o.setRealPrice($o.getOriginalPrice() - 50);
+        System.out.println("成功匹配到 3");
+end
+
+
+// 400 <= x   -120
+rule "order_discount_4"
+    when
+        $o : Order(originalPrice >= 400)
+    then
+        $o.setRealPrice($o.getOriginalPrice() - 120);
+        System.out.println("成功匹配到 4");
+end

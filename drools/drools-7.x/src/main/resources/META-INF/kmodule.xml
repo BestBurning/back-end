@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+
+    <kbase name="di1shuai-drools" packages="rules" default="true">
+        <ksession name="order-rule" default="true"/>
+    </kbase>
+
+</kmodule>
