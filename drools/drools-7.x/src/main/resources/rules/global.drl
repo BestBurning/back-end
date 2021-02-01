@@ -1,0 +1,34 @@
+package rules;
+
+
+// ========= global
+
+global java.util.List list
+global com.di1shuai.drools.entity.DroolsRuleLanguage drl
+global Integer count
+
+rule "drl_global_1"
+    when
+    then
+        count += 10;
+        list.add("di1shuai");
+        list.add("drools");
+        drl.setNum(1);
+        System.out.println("drl_global_1");
+        System.out.println(count);
+        System.out.println(drl);
+        System.out.println(list.size());
+end
+
+rule "drl_global_2"
+    when
+    then
+        count += 10;
+        list.add("di1shuai");
+        list.add("drools");
+        drl.setValue("drl_global_2");
+        System.out.println("drl_global_2");
+        System.out.println(count);
+        System.out.println(drl);
+        System.out.println(list.size());
+end

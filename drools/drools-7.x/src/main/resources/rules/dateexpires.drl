@@ -1,0 +1,17 @@
+package rules;
+dialect  "mvel"
+
+
+rule "drl_dateexpires_1"
+    date-expires "2021-02-02 19:13"
+    when
+    then
+        System.out.println("规则drl_dateexpires_1触发");
+end
+
+rule "drl_dateexpires_2"
+    date-expires "2021-02-01 19:13"
+    when
+    then
+        System.out.println("规则drl_dateexpires_2触发");
+end

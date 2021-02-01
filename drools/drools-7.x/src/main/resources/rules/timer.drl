@@ -1,0 +1,18 @@
+package rules;
+import java.time.LocalDateTime
+dialect  "mvel"
+
+// timer
+rule "drl_timer_1"
+    timer (5s 2s) //5秒后触发，然后每隔2秒触发一次
+    when
+    then
+        System.out.println("规则drl_timer_1触发，触发时间为：" + LocalDateTime.now());
+end
+
+rule "drl_timer_2"
+    timer (cron:0/1 * * * * ?) //每隔1秒触发一次
+    when
+    then
+        System.out.println("规则drl_timer_2触发，触发时间为：" + LocalDateTime.now());
+end

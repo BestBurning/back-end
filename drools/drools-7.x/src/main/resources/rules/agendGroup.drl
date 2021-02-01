@@ -1,0 +1,38 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+//=====================
+// agenda-group
+
+rule "drl_agenda_group_1"
+    agenda-group "agendaGroup1"
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_1");
+end
+
+rule "drl_agenda_group_2"
+    agenda-group "agendaGroup1"
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_2");
+end
+
+rule "drl_agenda_group_3"
+    agenda-group "agendaGroup2"
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_3");
+end
+
+rule "drl_agenda_group_4"
+    agenda-group "agendaGroup2"
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_4");
+end

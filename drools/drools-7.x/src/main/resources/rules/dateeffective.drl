@@ -1,0 +1,17 @@
+package rules;
+dialect  "mvel"
+
+// date-effective
+rule "drl_dateeffective_1"
+    date-effective "2021-02-02 19:13"
+    when
+    then
+        System.out.println("规则drl_dateeffective_1触发");
+end
+
+rule "drl_dateeffective_2"
+    date-effective "2021-02-01 19:13"
+    when
+    then
+        System.out.println("规则drl_dateeffective_2触发");
+end

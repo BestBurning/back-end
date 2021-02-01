@@ -1,0 +1,88 @@
+package rules;
+
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+import java.time.LocalDateTime
+
+rule "drl_contains"
+    when
+        $drl : DroolsRuleLanguage(numList contains num && numList != null)
+    then
+        System.out.println($drl.getNumList() +  " contains " + $drl.getNum());
+end
+
+rule "drl_not_contains"
+    when
+        $drl : DroolsRuleLanguage(numList not contains num && numList!=null)
+    then
+        System.out.println($drl.getNumList() +  " not contains " + $drl.getNum());
+end
+
+rule "drl_memberOf"
+    when
+        $drl : DroolsRuleLanguage(num != null && numList!=null && num memberOf numList)
+    then
+        System.out.println($drl.getNum() + " memberOf " + $drl.getNumList());
+end
+
+rule "drl_not_memberOf"
+    when
+        $drl : DroolsRuleLanguage(num != null && numList!=null && num not memberOf numList)
+    then
+        System.out.println($drl.getNum() + " not memberOf " + $drl.getNumList());
+end
+
+rule "drl_matches"
+    when
+        $drl : DroolsRuleLanguage(value!=null && value matches matchStr)
+    then
+        System.out.println($drl.getValue() + " matches " + $drl.getMatchStr());
+end
+
+rule "drl_not_matches"
+    when
+        $drl : DroolsRuleLanguage(value!=null && value not matches matchStr)
+    then
+        System.out.println($drl.getValue() + " not matches " + $drl.getMatchStr());
+end
+
+rule "drl_update"
+    when
+        $drl : DroolsRuleLanguage(updateYes)
+    then
+        $drl.setNum(0);
+        update($drl);
+        System.out.println("update 触发其他规则");
+end
+
+rule "drl_insert"
+    when
+        $drl : DroolsRuleLanguage(insertYes)
+    then
+        DroolsRuleLanguage droolsRuleLanguage = new DroolsRuleLanguage().setNum(11);
+        insert(droolsRuleLanguage);
+        System.out.println("insert 再触发其他逻辑");
+end
+
+rule "drl_retract"
+    salience 100 // 优先级
+    when
+        $drl : DroolsRuleLanguage(retractYes)
+    then
+        retract($drl);
+        System.out.println("清空工作内存，不会触发其他任何规则");
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

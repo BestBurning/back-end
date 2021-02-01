@@ -1,0 +1,23 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+//=====================
+// activation-group
+
+rule "drl_activation_group_1"
+    activation-group "activationGroup"
+    when
+        $drl:DroolsRuleLanguage(activationGroupYes)
+    then
+        System.out.println("触发规则drl_activation_group_1");
+end
+
+rule "drl_activation_group_2"
+    activation-group "activationGroup"
+    when
+        $drl:DroolsRuleLanguage(activationGroupYes)
+    then
+        System.out.println("触发规则drl_activation_group_2");
+end
+

@@ -1,0 +1,20 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+rule "drl_enabled_false"
+    enabled false
+    when
+        $drl : DroolsRuleLanguage(enabledYes)
+    then
+        System.out.println("未开启 无论如何不会匹配到");
+end
+
+rule "drl_enabled_true"
+    enabled true
+    when
+        $drl : DroolsRuleLanguage(enabledYes)
+    then
+        System.out.println("开启，符合匹配规则既可以匹配到");
+end
+

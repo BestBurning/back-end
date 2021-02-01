@@ -1,0 +1,13 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+rule "drl_noloop"
+    //注意此处执行如果为false 由于后面执行了update 会导致重复触发规则
+    no-loop true
+    when
+        $drl:DroolsRuleLanguage(noloopYes)
+    then
+        update($drl);
+        System.out.println("规则drl_noloop触发");
+end

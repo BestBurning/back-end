@@ -1,0 +1,23 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+
+//====   auto-focus
+
+rule "drl_agenda_group_5"
+    agenda-group "agendaGroup3"
+    auto-focus true
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_5");
+end
+
+rule "drl_agenda_group_6"
+    agenda-group "agendaGroup3"
+    when
+        $drl:DroolsRuleLanguage(agendaGroupYes)
+    then
+        System.out.println("触发规则drl_agenda_group_6");
+end
