@@ -1,0 +1,18 @@
+package rules;
+dialect  "mvel"
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+
+
+rule "drl_extends_1"
+    when
+        $drl : DroolsRuleLanguage(extendsYes)
+    then
+        System.out.println("drl_extends_1 触发 -> " + $drl);
+end
+
+rule "drl_extends_2" extends "drl_extends_1"
+    when
+        DroolsRuleLanguage(num > 5)
+    then
+        System.out.println("drl_extends_2 触发 => " + $drl);
+end

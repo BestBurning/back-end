@@ -1,0 +1,11 @@
+package rules;
+dialect  "mvel"
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+
+
+rule "drl_exists"
+    when
+        exists DroolsRuleLanguage(existsYes)
+    then
+        System.out.println("drl exists 触发");
+end

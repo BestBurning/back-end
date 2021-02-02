@@ -1,0 +1,15 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+function String hello(String name){
+    return "hello " + name;
+}
+
+rule "drl_function"
+    when
+        $drl : DroolsRuleLanguage(functionYes)
+    then
+        String str = hello($drl.value);
+        System.out.println("function -> " + str);
+end

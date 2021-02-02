@@ -1,14 +1,15 @@
 package rules;
-
+import com.di1shuai.drools.entity.DroolsRuleLanguage
 
 // ========= global
 
 global java.util.List list
-global com.di1shuai.drools.entity.DroolsRuleLanguage drl
+global DroolsRuleLanguage drl
 global Integer count
 
 rule "drl_global_1"
     when
+        $drl: DroolsRuleLanguage(globalYes)
     then
         count += 10;
         list.add("di1shuai");
@@ -22,6 +23,7 @@ end
 
 rule "drl_global_2"
     when
+        $drl: DroolsRuleLanguage(globalYes)
     then
         count += 10;
         list.add("di1shuai");

@@ -1,0 +1,12 @@
+package rules;
+dialect  "mvel"
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+
+
+rule "drl_eval"
+    when
+        $drl: DroolsRuleLanguage(evalYes) and
+        eval(1 == 1)
+    then
+        System.out.println("drl eval 触发");
+end

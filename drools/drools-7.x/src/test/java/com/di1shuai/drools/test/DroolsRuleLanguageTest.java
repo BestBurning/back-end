@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.QueryResults;
+import org.kie.api.runtime.rule.QueryResultsRow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class DroolsRuleLanguageTest {
     @BeforeAll
     public static void init() {
         //设置日期格式
-        System.setProperty("drools.dateformat","yyyy-MM-dd HH:mm");
+        System.setProperty("drools.dateformat", "yyyy-MM-dd HH:mm");
         // 获取KieService
         kieServices = KieServices.Factory.get();
         // 获取 Container
@@ -162,7 +164,7 @@ public class DroolsRuleLanguageTest {
         kieSession.insert(new DroolsRuleLanguage()
                 .setActivationGroupYes(true)
         );
-        kieSession.fireAllRules();
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_activation"));
     }
 
     /**
@@ -216,7 +218,8 @@ public class DroolsRuleLanguageTest {
      * 日期生效
      */
     @Test
-    public void dateEffective(){
+    public void dateEffective() {
+        kieSession.insert(new DroolsRuleLanguage().setDateEffective(true));
         kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_dateeffective"));
     }
 
@@ -224,7 +227,7 @@ public class DroolsRuleLanguageTest {
      * 失效日期
      */
     @Test
-    public void dateExpires(){
+    public void dateExpires() {
         kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_dateexpires"));
     }
 
@@ -232,14 +235,144 @@ public class DroolsRuleLanguageTest {
      * global
      * 包装类 不改变
      * 引用类 改变
+     */
+    @Test
+    public void global() {
+        kieSession.setGlobal("list", new ArrayList<String>());
+        kieSession.setGlobal("count", Integer.valueOf(0));
+        kieSession.setGlobal("drl", new DroolsRuleLanguage());
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_global"));
+    }
+
+    /**
+     * query
+     */
+    @Test
+    public void queryTest() {
+        kieSession.insert(new DroolsRuleLanguage().setNum(0));
+        kieSession.insert(new DroolsRuleLanguage().setNum(1));
+        kieSession.insert(new DroolsRuleLanguage().setNum(2));
+        kieSession.insert(new DroolsRuleLanguage().setNum(3));
+        kieSession.insert(new DroolsRuleLanguage().setNum(4));
+        kieSession.insert(new DroolsRuleLanguage().setNum(5));
+        kieSession.insert(new DroolsRuleLanguage().setNum(11));
+        kieSession.insert(new DroolsRuleLanguage().setNum(18));
+
+        QueryResults queryResults1 = kieSession.getQueryResults("query_1");
+        int size1 = queryResults1.size();
+        System.out.println("query_1 size -> " + size1);
+        showResult(queryResults1);
+
+
+        QueryResults queryResults2 = kieSession.getQueryResults("query_2");
+        int size2 = queryResults2.size();
+        System.out.println("query_2 size -> " + size2);
+        showResult(queryResults2);
+
+        // 带参数
+        QueryResults queryResults3 = kieSession.getQueryResults("query_3", 1);
+        int size3 = queryResults3.size();
+        System.out.println("query_3 size -> " + size3);
+        showResult(queryResults3);
+
+
+        kieSession.fireAllRules();
+    }
+
+    private void showResult(QueryResults queryResults1) {
+        queryResults1.forEach(row -> {
+                    DroolsRuleLanguage drl = (DroolsRuleLanguage) row.get("$drl");
+                    System.out.println(drl);
+                }
+        );
+    }
+
+    /**
+     * function 函数
+     * 类似于Java的方法 可以封装业务逻辑 方便复用
+     */
+    @Test
+    public void function() {
+        kieSession.insert(new DroolsRuleLanguage().setFunctionYes(true).setValue("di1shuai"));
+        kieSession.fireAllRules();
+    }
+
+    // LHS   Left
+
+    /**
+     * in
+     * not in
+     */
+    @Test
+    public void inAndNotIn() {
+        kieSession.insert(new DroolsRuleLanguage().setNum(1).setInAndNotInYes(true));
+        kieSession.insert(new DroolsRuleLanguage().setNum(2).setInAndNotInYes(true));
+        kieSession.insert(new DroolsRuleLanguage().setNum(3).setInAndNotInYes(true));
+        kieSession.insert(new DroolsRuleLanguage().setNum(8).setInAndNotInYes(true));
+        kieSession.insert(new DroolsRuleLanguage().setNum(9).setInAndNotInYes(true));
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_in_notin"));
+    }
+
+    /**
+     * 条件元素eval
+     * eval() 的值为boolean
+     */
+    @Test
+    public void eval() {
+        kieSession.insert(new DroolsRuleLanguage().setEvalYes(true));
+        kieSession.fireAllRules();
+    }
+
+    /**
+     * not
+     * 用于判断Work Memory中是否存在某个Fact对象
+     * 如果存在则返回false
+     * 如果不存在则返回true
+     * <p>
+     * <p>
+     * not Object(可选择的条件约束)
+     */
+    @Test
+    public void not() {
+        kieSession.insert(new DroolsRuleLanguage().setNum(3).setNotYes(true));
+        kieSession.fireAllRules();
+    }
+
+    /**
+     * exists
+     * 与not相反 判断工作内存中是否存在某个元素
+     * 存在返回true
+     * 不存在返回false
+     */
+    @Test
+    public void exists() {
+        kieSession.insert(new DroolsRuleLanguage().setExistsYes(true));
+        kieSession.fireAllRules();
+    }
+
+    /**
+     * 规则继承
+     * 规则可以继承LHS的内容
+     *
+     * 为什么 继承后匹配多遍
      *
      */
     @Test
-    public void global(){
-        kieSession.setGlobal("list",new ArrayList<String>());
-        kieSession.setGlobal("count",Integer.valueOf(0));
-        kieSession.setGlobal("drl",new DroolsRuleLanguage());
-        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("drl_global"));
+    public void extendsDemo() {
+        kieSession.insert(new DroolsRuleLanguage().setExtendsYes(true).setNum(1));
+        kieSession.insert(new DroolsRuleLanguage().setExtendsYes(true).setNum(9));
+        kieSession.insert(new DroolsRuleLanguage().setExtendsYes(false).setNum(2));
+        kieSession.insert(new DroolsRuleLanguage().setExtendsYes(false).setNum(8));
+
+
+        kieSession.fireAllRules();
+
     }
+
+
+    // RHS 加强
+
+
+
 
 }

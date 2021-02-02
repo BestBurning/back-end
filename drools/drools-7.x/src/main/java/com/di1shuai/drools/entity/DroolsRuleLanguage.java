@@ -56,4 +56,23 @@ public class DroolsRuleLanguage {
     private boolean activationGroupYes;
 
     private boolean agendaGroupYes;
+
+    private boolean dateExpiresYes;
+
+    private boolean globalYes;
+
+    private boolean dateEffective;
+
+    private boolean functionYes;
+
+    private boolean inAndNotInYes;
+
+    private boolean evalYes;
+
+    private boolean notYes;
+
+    private boolean existsYes;
+
+    private boolean extendsYes;
+
 }

@@ -1,0 +1,11 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+rule "drl_not"
+    when
+        $drl : DroolsRuleLanguage(notYes) and
+        not DroolsRuleLanguage(num == 1)
+    then
+        System.out.println("drl not 触发");
+end

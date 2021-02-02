@@ -1,0 +1,16 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+dialect  "mvel"
+
+rule "drl_in_notin_1"
+    when
+        $drl : DroolsRuleLanguage(num in (1,2,3,4) && inAndNotInYes)
+    then
+        System.out.println($drl.num + "规则drl_in触发");
+end
+rule "drl_in_notin_2"
+    when
+        $drl : DroolsRuleLanguage(num not in (1,2,3,4) && inAndNotInYes)
+    then
+        System.out.println($drl.num + "规则drl_notin触发");
+end

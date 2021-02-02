@@ -1,0 +1,16 @@
+package rules;
+import com.di1shuai.drools.entity.DroolsRuleLanguage
+
+dialect  "mvel"
+
+query "query_1"
+    $drl : DroolsRuleLanguage(num < 10)
+end
+
+query "query_2"
+    $drl : DroolsRuleLanguage(num >= 10)
+end
+
+query "query_3"(int n)
+    $drl : DroolsRuleLanguage(n == num)
+end
