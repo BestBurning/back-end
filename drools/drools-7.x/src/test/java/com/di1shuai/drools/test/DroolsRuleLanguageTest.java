@@ -354,7 +354,7 @@ public class DroolsRuleLanguageTest {
      * 规则继承
      * 规则可以继承LHS的内容
      *
-     * 为什么 继承后匹配多遍
+     * bug? 继承后匹配多遍
      *
      */
     @Test

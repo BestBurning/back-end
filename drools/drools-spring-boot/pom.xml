@@ -9,17 +9,23 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>drools-7.x</artifactId>
+    <artifactId>drools-spring-boot</artifactId>
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
         <drools.version>7.48.0.Final</drools.version>
-        <junit.version>5.7.0</junit.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.4.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.drools</groupId>
                 <artifactId>drools-bom</artifactId>
@@ -27,15 +33,9 @@
                 <version>${drools.version}</version>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <dependencies>
         <dependency>
@@ -45,29 +45,20 @@
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-compiler</artifactId>
-<!--            <scope>runtime</scope>-->
         </dependency>
-        <!--规则-->
         <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-mvel</artifactId>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-spring</artifactId>
+            <version>${drools.version}</version>
         </dependency>
-
-
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.14.0</version>
         </dependency>
     </dependencies>
 

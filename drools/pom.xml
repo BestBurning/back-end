@@ -15,6 +15,7 @@
     <modules>
         <module>drools-6.x</module>
         <module>drools-7.x</module>
+        <module>drools-spring-boot</module>
     </modules>
 
 </project>

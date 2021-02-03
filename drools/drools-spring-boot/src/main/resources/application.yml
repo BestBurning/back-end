@@ -1,0 +1,9 @@
+server:
+  port: 8880
+spring:
+  application:
+    name: drools-spring-boot
+
+drools:
+  rule:
+    path: rules/
