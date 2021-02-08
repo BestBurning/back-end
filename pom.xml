@@ -23,5 +23,6 @@
         <module>activity-mq</module>
         <module>drools</module>
         <module>rpc</module>
+        <module>guava</module>
     </modules>
 </project>
