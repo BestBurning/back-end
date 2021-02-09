@@ -1,4 +1,4 @@
-package com.di1shuai.springfox.domain;
+package com.di1shuai.springfox.v2.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

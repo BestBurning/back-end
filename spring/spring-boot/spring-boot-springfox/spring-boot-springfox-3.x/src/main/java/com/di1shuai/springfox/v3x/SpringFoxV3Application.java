@@ -1,6 +1,5 @@
-package com.di1shuai.springfox;
+package com.di1shuai.springfox.v3x;
 
-import io.swagger.annotations.Api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,12 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description:
  */
 @SpringBootApplication
-public class SpringFoxApplication {
+public class SpringFoxV3Application {
 
 
     public static void main(String[] args) {
 
-        SpringApplication.run(SpringFoxApplication.class,args);
+        SpringApplication.run(SpringFoxV3Application.class,args);
 
     }
 

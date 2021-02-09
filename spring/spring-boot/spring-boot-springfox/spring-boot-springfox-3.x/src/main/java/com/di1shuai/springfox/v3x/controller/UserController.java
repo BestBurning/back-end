@@ -1,14 +1,14 @@
-package com.di1shuai.springfox.controller;
+package com.di1shuai.springfox.v3x.controller;
 
-import com.di1shuai.springfox.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
+import com.di1shuai.springfox.v3x.domain.User;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author: Bruce
