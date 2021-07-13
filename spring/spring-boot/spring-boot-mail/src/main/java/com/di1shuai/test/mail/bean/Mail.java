@@ -1,4 +1,4 @@
-package com.di1shuai.test.mail;
+package com.di1shuai.test.mail.bean;
 
 import java.util.List;
 import java.util.Map;

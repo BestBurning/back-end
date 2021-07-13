@@ -1,9 +1,18 @@
 spring:
   mail:
-    host: smtp.mxhichina.com
+    host: email.xxx.com
     port: 25
     username: email
     password: pwd
-    properties.mail.smtp.auth: true
-    properties.mail.smtp.starttls.enable: true
-    properties.mail.smtp.starttls.required: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        imap:
+          host: email.xxx.com
+          port: 143
+        store:
+          protocol: imap

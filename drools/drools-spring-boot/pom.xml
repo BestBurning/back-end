@@ -12,8 +12,8 @@
     <artifactId>drools-spring-boot</artifactId>
 
     <properties>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <drools.version>7.48.0.Final</drools.version>
     </properties>
 

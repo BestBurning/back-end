@@ -11,6 +11,10 @@
     <packaging>pom</packaging>
     <artifactId>spring</artifactId>
 
+    <properties>
+
+    </properties>
+
     <modules>
         <module>spring-boot</module>
         <module>spring-annotation</module>

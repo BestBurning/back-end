@@ -1,5 +1,6 @@
-package com.di1shuai.test.mail;
+package com.di1shuai.test.mail.service;
 
+import com.di1shuai.test.mail.bean.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -23,7 +24,7 @@ public class EmailService {
     private SpringTemplateEngine templateEngine;
 
 
-    public void sendSimpleMessage(Mail mail) throws MessagingException, IOException {
+    public void sendHTMLMessage(Mail mail) throws MessagingException, IOException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message,
                 MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
