@@ -28,5 +28,7 @@
         <module>drools</module>
         <module>rpc</module>
         <module>guava</module>
+        <module>jasper-pdf</module>
+        <module>scheduler</module>
     </modules>
 </project>

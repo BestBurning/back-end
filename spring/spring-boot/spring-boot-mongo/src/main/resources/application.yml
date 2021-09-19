@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      # replica set  读写分离
+      uri: mongodb://modbuser:Welcome1!@mongo1:27017,mongo2:27017,mongo3:27017/test?replicaSet=rep1&readPreference=secondaryPreferred
+#      uri: mongodb://modbuser:Welcome1!@localhost:27017/test  # 单节点
+
+logging:
+  level:
+    org.springframework.data.mongodb.core: debug
+    com.di1shuai: debug
