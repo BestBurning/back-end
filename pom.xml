@@ -30,5 +30,6 @@
         <module>guava</module>
         <module>jasper-pdf</module>
         <module>scheduler</module>
+        <module>hugegraph</module>
     </modules>
 </project>
