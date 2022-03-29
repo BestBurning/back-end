@@ -30,5 +30,6 @@
         <module>spring-boot-springfox</module>
         <module>spring-boot-aop</module>
         <module>spring-boot-elasticsearch</module>
+        <module>spring-boot-retry</module>
     </modules>
 </project>
