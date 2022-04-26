@@ -31,5 +31,6 @@
         <module>jasper-pdf</module>
         <module>scheduler</module>
         <module>hugegraph</module>
+        <module>shardingsphere</module>
     </modules>
 </project>

@@ -1,0 +1,48 @@
+#Server Port
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+spring:
+  date-format: yyyy-MM-dd HH:mm:ss
+  time-zone: GMT+8
+#  datasource:
+#    # 配置真实数据源
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      url: jdbc:mysql://10.6.37.66:3306/taghub-dev?useSSL=false&characterEncoding=utf8&useUnicode=true&useAffectedRows=true # 或spring.datasource.url=
+#      username: root # 或spring.datasource.username=
+#      password: root@1298 # 或spring.datasource.password=
+#      driver-class-name: com.mysql.jdbc.Driver #或 spring.datasource.driver-class-name=
+
+  shardingsphere:
+    enabled: true
+    props:
+      sql-show: true #　是否显示sql
+    datasource:
+      names: master,slave0
+      master:   # 配置第 1 个数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://xxxxx:3306/xxxx?useSSL=false&characterEncoding=utf8&useUnicode=true&useAffectedRows=true
+        username: xxxx
+        password: xxxx
+      slave0: # 配置第 2 个数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://xxxx:3306/xxxx?useSSL=false&characterEncoding=utf8&useUnicode=true&useAffectedRows=true
+        username: xxxx
+        password: xxxx
+    rules:
+      readwrite-splitting:
+        data-sources:
+          readwrite_ds:
+            type: Static # 读写分离类型，如: Static，Dynamic
+            props:
+              write-data-source-name: master # 写数据源名称
+              read-data-source-names: slave0 # 读数据源名称，多个从数据源用逗号分隔
+            load-balancer-name: round_robin # 负载均衡算法名称
+        load-balancers:
+          round_robin: # 负载均衡算法名称
+            type: ROUND_ROBIN  #负载均衡算法类型轮询算法
