@@ -16,8 +16,6 @@
     </properties>
 
     <modules>
-        <module>spring-boot</module>
         <module>spring-annotation</module>
-        <module>spring-cloud</module>
     </modules>
 </project>
