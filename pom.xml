@@ -32,5 +32,7 @@
         <module>scheduler</module>
         <module>hugegraph</module>
         <module>shardingsphere</module>
+        <module>rules-engine</module>
+        <module>json-schema</module>
     </modules>
 </project>
