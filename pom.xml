@@ -27,7 +27,6 @@
         <module>activity-mq</module>
         <module>rpc</module>
         <module>guava</module>
-        <module>jasper-pdf</module>
         <module>scheduler</module>
         <module>hugegraph</module>
         <module>shardingsphere</module>
