@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mine</module>
+        <module>drools</module>
     </modules>
     <artifactId>rules-engine</artifactId>
 

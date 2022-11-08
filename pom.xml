@@ -25,7 +25,6 @@
         <module>shiro</module>
         <module>test</module>
         <module>activity-mq</module>
-        <module>drools</module>
         <module>rpc</module>
         <module>guava</module>
         <module>jasper-pdf</module>
