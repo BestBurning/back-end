@@ -32,5 +32,7 @@
         <module>shardingsphere</module>
         <module>rules-engine</module>
         <module>json-schema</module>
+        <module>spring-boot-2.x</module>
+        <module>spring-boot-3.x</module>
     </modules>
 </project>
