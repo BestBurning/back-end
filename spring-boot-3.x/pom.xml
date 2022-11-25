@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-native</module>
+        <module>spring-boot-admin-3</module>
     </modules>
 
     <properties>
